@@ -1,28 +1,19 @@
-import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import './UserList.jsx'
-import UserList from "./UserList.jsx";
+import LoginPage from "./components/LoginPage.jsx";
+import ChatPage from "./components/ChatPage.jsx";
+import UserProfile from "./components/UserProfile.jsx";
 
-export default function App() {
-  return (
-      <>
-          <div className="chat-container">
-              <UserList />
-              <div className="chat-area">
-                  <div className="messages">
-                      <div className="message received">
-                          <span className="user">Пользователь 1:</span> Привет!
-                      </div>
-                      <div className="message sent">
-                          <span className="user">Вы:</span> Здравствуйте!
-                      </div>
-                  </div>
-                  <div className="input-area">
-                      <input type="text" placeholder="Введите сообщение..."/>
-                      <button>Отправить</button>
-                  </div>
-              </div>
-          </div>
-      </>
-  )
-}
+function App() {
+        return (
+            <Router>
+                <Routes>
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/chat" element={<ChatPage />} />
+                    <Route path="/profile/:id" element={<UserProfile />} />
+                </Routes>
+            </Router>
+        );
+    }
+
+export default App;

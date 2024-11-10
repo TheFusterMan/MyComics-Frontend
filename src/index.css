@@ -17,6 +17,26 @@ body {
   overflow: hidden; /* Чтобы скрыть выходящие за границы элементы */
 }
 
+.chat-list {
+  width: 100px;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+}
+
+.chat-list h2 {
+  margin-top: 0;
+}
+
+.chat-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.chat-list li {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
 .user-list {
   width: 200px;
   border-right: 1px solid #ddd;
@@ -46,7 +66,7 @@ body {
 
 .messages {
   flex-grow: 1;
-  overflow-y: auto; /* Добавляем прокрутку */
+  overflow-y: auto;
   padding-bottom: 10px;
 }
 

@@ -1,21 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function UserList() {
-    const [userList, setUserList] = useState([
-        {
-            'id': '1',
-            'name': 'Пользователь 1',
-        },
-        {
-            'id': '2',
-            'name': 'Пользователь 2'
-        },
-        {
-            'id': '3',
-            'name': 'Пользователь 3'
-        },
-    ])
-
+function UserList({ users }) {
+    const navigate = useNavigate();
     // useEffect(() => {
     //     const fetchUsers = async () => {
     //         try {
@@ -34,17 +21,24 @@ function UserList() {
     //     fetchUsers();
     // }, []);
 
+    const handleClick = (user) => {
+        // Перенаправляем на страницу профиля
+        navigate(`/profile/${user.id}`);
+    };
+
     return (
-        <div className="user-list">
-            <h2>Пользователи</h2>
-            <ul>
-                {userList.map(user => (
-                    <li key={user.id}>
-                        {user.name}
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <>
+            <div className="user-list">
+                <h2>Пользователи</h2>
+                <ul>
+                    {users.map((user) => (
+                        <li key={user.id} onClick={() => handleClick(user)}>
+                            {user.name}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </>
     );
 }
 
